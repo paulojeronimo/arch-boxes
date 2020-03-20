@@ -1,0 +1,11 @@
+--- local.json	2020-03-20 15:46:47.000000000 -0300
++++ local-light.json	2020-03-20 16:11:56.000000000 -0300
+@@ -57,7 +57,7 @@
+         "provision/cleanup.sh",
+         "paulojeronimo/provision/generate-mirrorlist.sh"
+       ],
+-      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}'",
++      "execute_command": "echo 'vagrant'|sudo -S sh '{{.Path}}' light",
+       "only": [
+         "virtualbox-iso"
+       ]

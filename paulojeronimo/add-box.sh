@@ -10,6 +10,6 @@ box_name=${box_name:-paulojeronimo/archlinux}
 box=${box:-$PWD/paulojeronimo-archlinux-$box_date.box}
 
 [ -f "$box" ] || { echo "Box ($box) not found!"; exit 1; }
-cmd="vagrant box add --name \"$box_name\" \"$box\""
+cmd="vagrant box add --force --name \"$box_name\" \"$box\""
 echo $cmd
 eval $cmd

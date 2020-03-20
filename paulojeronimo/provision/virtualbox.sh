@@ -26,10 +26,13 @@ sudo pacman -S --noconfirm \
   chromium \
   asciidoctor
 
-# Graphical enviroment
-sudo pacman -S --noconfirm \
-  xorg xorg-xinit \
-  deepin deepin-extra \
-  ttf-freefont \
-  lightdm lightdm-gtk-greeter
-sudo systemctl enable lightdm
+if [ "$1" != "light" ]
+then
+  # Graphical environment
+  sudo pacman -S --noconfirm \
+    xorg xorg-xinit \
+    deepin deepin-extra \
+    ttf-freefont \
+    lightdm lightdm-gtk-greeter
+  sudo systemctl enable lightdm
+fi

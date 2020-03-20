@@ -1,7 +1,7 @@
 {
   "variables": {
-    "iso_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/archlinux-2019.11.01-x86_64.iso",
-    "iso_checksum_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/sha1sums.txt",
+    "iso_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/2020.02.01/archlinux-2020.02.01-x86_64.iso",
+    "iso_checksum_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/2020.02.01/sha1sums.txt",
     "iso_checksum_type": "sha1",
     "disk_size": "81920",
     "memory": "1024",
