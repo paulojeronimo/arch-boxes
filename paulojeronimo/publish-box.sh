@@ -12,9 +12,10 @@ set +x
 set -euo pipefail
 
 BASE_DIR=`cd "$(dirname "$0")/.."; pwd`
-VERSION=${VERSION:-"2020-02-17"}
+VERSION=${VERSION:-$(date +%F)}
 FIX=${FIX:-"01"}
-NAME=${NAME:-"paulojeronimo-archlinux"}
+TYPE=${1:-default}
+NAME=${NAME:-"paulojeronimo-archlinux-$TYPE"}
 BOX=${BOX:-"../$NAME-$VERSION.box"}
 
 cd "$BASE_DIR"

@@ -1,7 +1,7 @@
 {
   "variables": {
-    "iso_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/2020.02.01/archlinux-2020.02.01-x86_64.iso",
-    "iso_checksum_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/2020.02.01/sha1sums.txt",
+    "iso_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/2020.03.01/archlinux-2020.03.01-x86_64.iso",
+    "iso_checksum_url": "file:///Users/pj/Downloads/softwares/linux/archlinux/2020.03.01/sha1sums.txt",
     "iso_checksum_type": "sha1",
     "disk_size": "81920",
     "memory": "1024",
@@ -53,7 +53,7 @@
       "type": "shell",
       "scripts": [
         "provision/postinstall.sh",
-        "paulojeronimo/provision/virtualbox.sh",
+        "paulojeronimo/provision/BOX_TYPE.sh",
         "provision/cleanup.sh",
         "paulojeronimo/provision/generate-mirrorlist.sh"
       ],
@@ -75,7 +75,7 @@
       {
         "type": "vagrant",
         "keep_input_artifact": false,
-        "output": "paulojeronimo-archlinux-{{isotime \"2006-01-02\"}}.box"
+        "output": "paulojeronimo-archlinux-BOX_TYPE-{{isotime \"2006-01-02\"}}.box"
       }
     ]
   ]

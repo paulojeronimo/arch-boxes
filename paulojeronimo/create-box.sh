@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 set +x
-set -eo pipefail
+set -euo pipefail
 
 BASE_DIR=`cd "$(dirname "$0")/.."; pwd`
 cd "$BASE_DIR"
@@ -11,13 +11,11 @@ then
   exit 1
 fi
 
+box_type=${1:-default}
 json=local.json
-if [ "$1" = "light" ]
-then
-  (
-    cd paulojeronimo
-    patch $json local-light.diff -o local-$1.json
-  )
-  json=local-$1.json
-fi
+(
+  cd paulojeronimo
+  sed "s/BOX_TYPE/$box_type/g" $json > local-$box_type.json
+)
+json=local-$box_type.json
 packer build -only=virtualbox-iso paulojeronimo/$json

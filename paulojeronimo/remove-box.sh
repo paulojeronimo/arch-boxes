@@ -2,4 +2,5 @@
 set +x
 set -euo pipefail
 
-rm -rf ~/.vagrant.d/boxes/paulojeronimo*archlinux
+box_type=${1:-default}
+rm -rf ~/.vagrant.d/boxes/paulojeronimo*archlinux-$box_type
