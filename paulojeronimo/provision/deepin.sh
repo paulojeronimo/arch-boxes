@@ -17,13 +17,22 @@ pacman -S --noconfirm \
   rsync \
   reflector
 
-# Docker
-tee /etc/modules-load.d/loop.conf <<< "loop"
-modprobe loop
-pacman -S --noconfirm docker
-systemctl start docker.service
-systemctl enable docker.service
-gpasswd -a vagrant docker
+# Dev packages
+pacman -S --noconfirm \
+  gcc \
+  glibc \
+  make \
+  python2 \
+  chromium \
+  asciidoctor
+
+# Graphical environment
+pacman -S --noconfirm \
+  xorg xorg-xinit \
+  deepin deepin-extra \
+  ttf-freefont \
+  lightdm lightdm-gtk-greeter
+systemctl enable lightdm
 
 # Reflector is the last command in this script. It is used to configure the default mirrorlist
 # https://wiki.archlinux.org/index.php/Reflector
