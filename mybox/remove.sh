@@ -1,6 +1,10 @@
 #/usr/bin/env bash
-set +x
+#
+DEBUG=${DEBUG:-false}
+$DEBUG && set -x || set +x
 set -euo pipefail
 
-box_type=${1:-default}
-rm -rf ~/.vagrant.d/boxes/paulojeronimo*archlinux-$box_type
+BASE_DIR=`cd "$(dirname "$0")/.."; pwd`
+source "$BASE_DIR"/mybox/common.sh
+
+rm -rf ~/.vagrant.d/boxes/${my_name}*archlinux-$box_type

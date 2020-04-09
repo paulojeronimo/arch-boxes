@@ -17,6 +17,14 @@ pacman -S --noconfirm \
   rsync \
   reflector
 
+# Docker
+tee /etc/modules-load.d/loop.conf <<< "loop"
+modprobe loop
+pacman -S --noconfirm docker
+systemctl start docker.service
+systemctl enable docker.service
+gpasswd -a vagrant docker
+
 # Dev packages
 pacman -S --noconfirm \
   gcc \

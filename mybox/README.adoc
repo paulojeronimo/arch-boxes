@@ -1,0 +1,60 @@
+= Scripts to create your Arch Linux Vagrant Box for VirtualBox
+
+== Setup
+
+Before start running any scripts inside this
+project, copy the file link:config.sample.sh[]
+and save it with your configurations inside a new
+file called `config.sh`.
+
+== Scripts
+
+link:create.sh[]::
+
+This script will generate the
+`$my_name/archlinux-$box_type` box by using a
+local Arch Linux mirror.
+This box is used by
+https://github.com/paulojeronimo/dev-box[
+dev-box^] project.
+
+You will use a local mirror created (and synced)
+by the
+https://github.com/paulojeronimo/archlinux-mirror-synchronizer[
+archlinux-mirror-syncrhronizer^] project.
+So, before running it, make sure that this mirror
+is running on `localhost:8000`.
+
+You can pass a parameter to this script in order
+to specify which `$box_type` you want to build.
+
+So, you can call this script like this way:
+
+----
+./create.sh deepin
+----
+
+`deepin` should be a script named `deepin.sh`
+inside `provision` directory.
+
+link:add.sh[]::
+
+This will add the generated box to Vagrant.
+By default, it will put this box on `~/.vagrant`
+directory.
+
+link:remove.sh[]::
+
+This script will remove the box register on
+Vagrant by deleting the corresponding directories:
+`~/.vagrant.d/boxes/paulojeronimo*archlinux`.
+
+link:update-myfork.sh[]::
+
+Just a small script to update my fork with its
+upstream.
+
+link:publish.sh[]::
+
+Publish the generetade box on
+https://app.vagrantup.com/[Vagrant Cloud^].
