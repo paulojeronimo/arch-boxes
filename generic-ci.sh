@@ -24,8 +24,10 @@ case $1 in
     ;;
 
   install-shfmt)
-    curl -Lo shfmt https://github.com/mvdan/sh/releases/download/v2.6.4/shfmt_v2.6.4_linux_amd64
+    SHFMT_VERSION="$(curl -s https://api.github.com/repos/mvdan/sh/releases/latest | jq -r -M '.tag_name')"
+    curl -Lo shfmt https://github.com/mvdan/sh/releases/download/"${SHFMT_VERSION}"/shfmt_"${SHFMT_VERSION}"_linux_amd64
     chmod +x ./shfmt
+    ./shfmt --version
     ;;
 
   install-yapf)
@@ -37,11 +39,11 @@ case $1 in
     ;;
 
   verify-official)
-    jq ".\"post-processors\"[0] |= map(select(.\"type\" != \"vagrant-cloud\"))" vagrant.json | ./packer validate -var "iso_url=https://downloads.archlinux.de/iso/$(date +'%Y.%m').01/archlinux-$(date +'%Y.%m').01-x86_64.iso" -var "iso_checksum_url=https://downloads.archlinux.de/iso/$(date +'%Y.%m').01/sha1sums.txt" -
+    ./packer validate -var "iso_checksum_url=https://mirror.pkgbuild.com/iso/latest/sha1sums.txt" -except=vagrant-cloud vagrant.json
     ;;
 
   verify-local)
-    jq ".\"post-processors\"[0] |= map(select(.\"type\" != \"vagrant-cloud\"))" local.json | ./packer validate -var "iso_url=https://downloads.archlinux.de/iso/$(date +'%Y.%m').01/archlinux-$(date +'%Y.%m').01-x86_64.iso" -var "iso_checksum_url=https://downloads.archlinux.de/iso/$(date +'%Y.%m').01/sha1sums.txt" -
+    ./packer validate local.json
     ;;
 
   # We use + instead of \; here because find doesn't pass
