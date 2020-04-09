@@ -12,3 +12,6 @@ my_name=paulojeronimo
 # Box type will compose the box name
 # It is also a Bash script (with a .sh extension) inside provision directory
 box_type=${1:-default}
+
+# Git remote upstream
+git_remote_upstream=https://github.com/archlinux/arch-boxes.git
